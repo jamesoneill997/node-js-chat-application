@@ -10,13 +10,9 @@ const io = socketio(server)
 
 
 const port = process.env.PORT || 3000
-const publicPath = path.join(__dirname, './public')
-
+const publicPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicPath))
-app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
-
 
 io.on('connection',()=>{
     console.log('New socket connection')
