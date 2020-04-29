@@ -5,8 +5,18 @@
     </head>
     <body>
         <h1>Linked up!</h1>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="js/chat.js"></script>
-        
+        <form id="sendMessage" action="">
+            <input name="message" id="msg" type="text" placeholder="Enter Message...">
+            <button id="send" type="submit" onclick="sendMessage">Send</button>
+        </form>
+
+        <button id="location">Send location</button>
+
+
     </body>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="js/chat.js"></script>
+
+
 </html>
