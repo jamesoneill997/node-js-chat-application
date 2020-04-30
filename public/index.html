@@ -6,23 +6,45 @@
         <link rel="stylesheet" href="/css/styles.min.css">
     </head>
     <body>
-        <h1>Linked up!</h1>
-        <div id="messages"></div>
-        <form id="sendMessage" action="">
-            <input name="message" id="msg" type="text" placeholder="Enter Message...">
-            <button id="send" type="submit" onclick="sendMessage">Send</button>
-        </form>
+        <div class="chat">
+            <div class="chat__sidebar">
+                <div class="chat__main">
+                    <div id="messages" class="chat__messages"></div>
+                        <div class="compose">
+                            <form id="sendMessage" action="">
+                            <input name="message" id="msg" type="text" placeholder="Enter Message...">
+                            <button id="send" type="submit" onclick="sendMessage">Send</button>
+                        </form>
+            
+                        <button id="location">Send location</button>
 
-        <button id="location">Send location</button>
+                        </div>
+                        
+
+                </div>
+            </div>
+        </div>
 
         <script id="message-template" type="text/html">
-            <div> 
-                <p>{{createdAt}} - {{message}}</p>
+            <div class="message"> 
+                <p>
+                    <span class="message__name">Username</span>
+                    <span class="message__meta">{{createdAt}}</span>
+                </p>
+                <p>- {{message}}</p>
             </div>
         </script>
         <script id="location-template" type="text/html">
             <div> 
-                {{createdAt}} - <a href="{{location}}">My current location</a>
+                <div class="message"> 
+                    <p>
+                        <span class="message__name">Username</span>
+                        <span class="message__meta">{{createdAt}}</span>
+                    </p>
+                    <p>{{createdAt}} - <a href="{{location}}">My current location</a></p>
+                    
+                </div>
+                
             
             </div>
         </script>
