@@ -5,6 +5,7 @@
     </head>
     <body>
         <h1>Linked up!</h1>
+        <div id="messages"></div>
         <form id="sendMessage" action="">
             <input name="message" id="msg" type="text" placeholder="Enter Message...">
             <button id="send" type="submit" onclick="sendMessage">Send</button>
@@ -12,11 +13,21 @@
 
         <button id="location">Send location</button>
 
+        <script id="message-template" type="text/html">
+            <div> 
+                <p>{{message}}</p>
+            
+            </div>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+    
+        <script src="js/chat.js"></script>
 
     </body>
-    <script src="/socket.io/socket.io.js"></script>
 
-    <script src="js/chat.js"></script>
 
 
 </html>

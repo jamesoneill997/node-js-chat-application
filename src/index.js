@@ -25,7 +25,7 @@ io.on('connection',(socket)=>{
         if(filter.isProfane(message)){
             return callback('Bad language not allowed')
         }
-        io.emit('sendToAll', message)
+        io.emit('message', message)
         callback('Delivered')
     })
 
