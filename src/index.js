@@ -9,7 +9,7 @@ const server = http.createServer(app)
 const io = socketio(server)
 const Filter = require('bad-words')
 
-const {generateMessage} = require('./utils/messages')
+const {generateMessage, locationMessage} = require('./utils/messages')
 
 
 const port = process.env.PORT || 3000
@@ -36,7 +36,7 @@ io.on('connection',(socket)=>{
     })
 
     socket.on('sendLocation', (lat,long, callback) =>{
-        io.emit('locationMessage', `https://www.google.com/maps/place/?q=${lat},${long}`)
+        io.emit('locationMessage', locationMessage(`https://www.google.com/maps/place/?q=${lat},${long}`))
        callback('Location Shared!')
     })
 })
