@@ -8,14 +8,25 @@ const $messages = document.querySelector('#messages')
 
 
 const messageTemplate = document.querySelector('#message-template').innerHTML
+const locationTemplate = document.querySelector('#location-template').innerHTML
 
 socket.on('message', (message)=>{
     console.log(message)
     const html = Mustache.render(messageTemplate,{
-        message
+        message: message.text,
+        createdAt: moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
 })
+
+socket.on('locationMessage', (location)=>{
+    console.log(location)
+    const html = Mustache.render(locationTemplate,{
+        location
+    })
+    $messages.insertAdjacentHTML('beforeend',html)
+})
+
 
 document.querySelector('#sendMessage').addEventListener('submit', (message)=>{
     message.preventDefault()
