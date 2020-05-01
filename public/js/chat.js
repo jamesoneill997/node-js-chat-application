@@ -9,9 +9,12 @@ const $messages = document.querySelector('#messages')
 
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationTemplate = document.querySelector('#location-template').innerHTML
+const sideBarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 
 const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix:true})
+
+
 
 
 socket.on('message', (message)=>{
@@ -33,6 +36,14 @@ socket.on('locationMessage', (location)=>{
     })
     $messages.insertAdjacentHTML('beforeend',html)
 })
+
+socket.on('roomUpdate', ({room, users})=>{
+    const html = Mustache.render(sideBarTemplate, {room, users})
+    document.querySelector('#sidebar').innerHTML = html
+})
+
+
+
 
 
 document.querySelector('#sendMessage').addEventListener('submit', (message)=>{
