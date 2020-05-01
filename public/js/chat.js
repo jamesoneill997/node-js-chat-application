@@ -69,4 +69,6 @@ document.querySelector('#location').addEventListener('click',()=>{
 })
 
 
-socket.emit('join', {username, room})
+socket.emit('join', {username, room}, (error)=>{
+    
+})
