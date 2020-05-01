@@ -18,8 +18,17 @@ const publicPath = path.join(__dirname, '../public')
 app.use(express.static(publicPath))
 
 io.on('connection',(socket)=>{
-    socket.emit('message',generateMessage('Welcome!'))
-    socket.broadcast.emit('message', generateMessage('A new user has joined the chat'))
+    io.on('connection',(socket)=>{
+        console.log('New connection')
+    })
+
+    socket.on('join', ({username, room})=>{
+        socket.join(room)
+        
+        socket.emit('message',generateMessage('Welcome!'))
+        socket.broadcast.to(room).emit('message', generateMessage(username+' has joined!'))
+
+    })
     
     socket.on('sendMessage', (message, callback)=>{
         const filter = new Filter()
